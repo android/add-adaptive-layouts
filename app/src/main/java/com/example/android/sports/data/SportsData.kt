@@ -101,7 +101,6 @@ object SportsData{
                 imageResourceId = R.drawable.icon_tennis,
                 sportsImageBanner = R.drawable.img_tennis
             )
-
         )
     }
 }

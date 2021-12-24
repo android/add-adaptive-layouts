@@ -26,21 +26,16 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
-        android:padding="8dp"
         android:layout_width="550dp"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:layout_gravity="start"/>
+        android:padding="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-    <!-- The second child becomes the right (content) pane. In this
-         example, android:layout_weight is used to expand this detail pane
-         to consume leftover available space when the
-         the entire window is wide enough to fit both the left and right pane.-->
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/detail_container"
+        android:layout_height="match_parent"
         android:layout_width="300dp"
         android:layout_weight="1"
-        android:layout_height="match_parent"
-        android:name="com.example.android.sports.NewsDetailsFragment" />
+        android:id="@+id/detail_container"
+        android:name="com.example.android.sports.NewsDetailsFragment"/>
 </androidx.slidingpanelayout.widget.SlidingPaneLayout>

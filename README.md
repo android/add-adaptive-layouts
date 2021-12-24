@@ -1,27 +1,23 @@
-Sports - Solution Code
-==================================
+Sports App
+===================================
 
-Solution code for Android Basics in Kotlin.
-Codelab: Adaptive Layouts.
-
-Introduction
-------------
+Starter code for Android Basics codelab - Adaptive Layouts
 
 Sports app is a basic app to introduce beginner students to adaptive layouts. This app consists of
 two fragments: a sports topics list and a details screen. The details screen displays placeholder
- text for the sports news.
-This app demonstrated
-the use of [SlidingPaneLayout](https://developer.android.com/reference/androidx/slidingpanelayout/widget/SlidingPaneLayout?hl=PL).
+text for the sports news.
+
+
+Used in the [Android Basics with Kotlin](https://developer.android.com/courses/android-basics-kotlin/course) course.
+
 
 Pre-requisites
 --------------
 
 You need to know:
-- How to download code into Android Studio and run it.
-- How to create and use fragments.
-- RecyclerView and adapters
-- Familiar with the Android architecture components ViewModel, and LiveData.
-- Basic knowledge of Navigation components.
+- Knowledge about Fragments.
+- Basics of Navigation
+
 
 Getting Started
 ---------------
