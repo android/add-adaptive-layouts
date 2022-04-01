@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 The Android Open Source Project
+ * Copyright (c) 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,24 @@
 
 package com.example.android.sports
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.graphics.toComposeRect
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.dp
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
+import androidx.window.layout.WindowMetricsCalculator
+import com.example.android.sports.components.BottomNavigationBar
+import com.example.android.sports.data.MenuItem
 import com.example.android.sports.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -40,11 +51,47 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         appBarConfiguration = AppBarConfiguration(navController.graph)
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
+
+        binding.navigation.setupWithNavController(navController)
+    /*
+        val navigationMenuItems = listOf(
+            MenuItem.Home,
+            MenuItem.Favorites,
+            MenuItem.Settings
+        )
+
+        binding.navigation.setContent {
+            MaterialTheme {
+                BottomNavigationBar(menuItems = navigationMenuItems){ menuItem ->
+                    navController.navigate(menuItem.destinationId)
+                }
+            }
+        }
+    */
     }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+}
+
+enum class WidthSizeClass { COMPACT, MEDIUM, EXPANDED }
+
+@Composable
+fun Activity.rememberWidthSizeClass(): WidthSizeClass {
+    val configuration = LocalConfiguration.current
+    val windowMetrics = remember(configuration) {
+        WindowMetricsCalculator.getOrCreate()
+            .computeCurrentWindowMetrics(this)
+    }
+    val windowDpSize = with(LocalDensity.current) {
+        windowMetrics.bounds.toComposeRect().size.toDpSize()
+    }
+    return  when {
+        windowDpSize.width < 600.dp -> WidthSizeClass.COMPACT
+        windowDpSize.width < 840.dp -> WidthSizeClass.MEDIUM
+        else -> WidthSizeClass.EXPANDED
     }
 }

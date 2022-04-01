@@ -26,15 +26,16 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
-        android:layout_width="550dp"
+        android:layout_width="1280dp"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:clipToPadding="false"
         android:padding="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:layout_height="match_parent"
         android:layout_width="300dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:id="@+id/detail_container"
         android:name="com.example.android.sports.NewsDetailsFragment"/>
