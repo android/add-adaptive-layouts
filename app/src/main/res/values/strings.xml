@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2021 The Android Open Source Project
+  ~ Copyright (c) 2022 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -52,4 +52,7 @@
     <string name="swimming_subtitle">Here is some Swimming news!</string>
     <string name="table_tennis_subtitle">Here is some Table Tennis news!</string>
     <string name="tennis_subtitle">Here is some Tennis news!</string>
+    <string name="home">Home</string>
+    <string name="favorites">Favorites</string>
+    <string name="settings">Settings</string>
 </resources>
