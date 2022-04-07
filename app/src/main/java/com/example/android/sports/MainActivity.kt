@@ -19,9 +19,11 @@ package com.example.android.sports
 import android.app.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.toComposeRect
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
@@ -33,6 +35,8 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import androidx.window.layout.WindowMetricsCalculator
 import com.example.android.sports.components.BottomNavigationBar
+import com.example.android.sports.components.NavRail
+import com.example.android.sports.components.NavigationDrawer
 import com.example.android.sports.data.MenuItem
 import com.example.android.sports.databinding.ActivityMainBinding
 
@@ -52,8 +56,6 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
 
-        binding.navigation.setupWithNavController(navController)
-    /*
         val navigationMenuItems = listOf(
             MenuItem.Home,
             MenuItem.Favorites,
@@ -62,12 +64,26 @@ class MainActivity : AppCompatActivity() {
 
         binding.navigation.setContent {
             MaterialTheme {
-                BottomNavigationBar(menuItems = navigationMenuItems){ menuItem ->
-                    navController.navigate(menuItem.destinationId)
+                when(rememberWidthSizeClass()){
+                    WidthSizeClass.COMPACT ->
+                        BottomNavigationBar(menuItems = navigationMenuItems) { menuItem ->
+                            navController.navigate(menuItem.destinationId)
+                        }
+                    WidthSizeClass.MEDIUM ->
+                        NavRail(menuItems = navigationMenuItems) { menuItem ->
+                            navController.navigate(menuItem.destinationId)
+                        }
+                    WidthSizeClass.EXPANDED ->
+                        NavigationDrawer(
+                            menuItems = navigationMenuItems,
+                            modifier = Modifier.width(256.dp)
+                        ) { menuItem ->
+                            navController.navigate(menuItem.destinationId)
+                        }
                 }
+
             }
         }
-    */
     }
 
     override fun onSupportNavigateUp(): Boolean {
