@@ -37,6 +37,7 @@ import androidx.window.layout.WindowMetricsCalculator
 import com.example.android.sports.components.BottomNavigationBar
 import com.example.android.sports.components.NavRail
 import com.example.android.sports.components.NavigationDrawer
+
 import com.example.android.sports.data.MenuItem
 import com.example.android.sports.databinding.ActivityMainBinding
 

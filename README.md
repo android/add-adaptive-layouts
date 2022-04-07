@@ -11,6 +11,7 @@ sports list.
 ## Pre-requisites
 
 You need to know:
+
 - Basic knowledge of view-based UI development.
 - Experience with Kotlin syntax, including lambda functions.
 - [Jetpack Compose basics codelab](https://developer.android.com/codelabs/jetpack-compose-basics).
